@@ -7,10 +7,12 @@
 
 namespace Tests\Feature\Models;
 
+use App\Events\UpdateTaskEvent;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class TaskTest extends TestCase
@@ -145,4 +147,30 @@ class TaskTest extends TestCase
         $this->expectException(QueryException::class);
         $task->update(['state' => '__INVALID_STATE__']);
     }
+
+    /**
+     * @return void
+     * @test
+     * @author Sebastian Faber <sebastian@startup-werk.de>
+     */
+    public function afterUpdatingATasksStateThereShouldBeAnEntryInTaskHistories()
+    {
+        $task = Task::factory()->for(User::factory(), 'creator')->create();
+        $task->update(['state'=> 'ON_HOLD']);
+        $this->assertDatabaseCount('task_histories', 1);
+    }
+
+    /**
+     * @return void
+     * @test
+     * @author Sebastian Faber <sebastian@startup-werk.de>
+     */
+    public function ifATasksStateIsUpdatedUpdateTaskEventShouldBeDispatched()
+    {
+        $task = Task::factory()->for(User::factory(), 'creator')->create();
+        Event::fake();
+        $task->update(['state'=> 'ON_HOLD']);
+        Event::assertDispatched(UpdateTaskEvent::class);
+    }
+
 }

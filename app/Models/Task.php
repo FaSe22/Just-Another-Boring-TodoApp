@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\UpdateTaskEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property mixed $priority
  * @property mixed $state
  * @property mixed $histories
+ * @property mixed $id
  */
 class Task extends Model
 {
@@ -19,6 +21,10 @@ class Task extends Model
     protected $guarded = ['id'];
 
     use HasFactory;
+
+    protected $dispatchesEvents = [
+        'updating' => UpdateTaskEvent::class
+    ];
 
     /**
      * @return BelongsTo

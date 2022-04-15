@@ -10,6 +10,8 @@ class TaskHistory extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function task(): BelongsTo
     {
         return $this->belongsTo(Task::class);
