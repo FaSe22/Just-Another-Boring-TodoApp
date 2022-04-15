@@ -37,7 +37,7 @@ sail artisan migrate
 sail artisan serve
 ````
 
-##Run tests
+## Run tests
 
 `````bash
 sail artisan test
