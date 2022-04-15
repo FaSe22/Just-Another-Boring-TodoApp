@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TaskFactory extends Factory
@@ -17,5 +18,14 @@ class TaskFactory extends Factory
             'title' => $this->faker->word(),
             'description' => $this->faker->paragraph()
         ];
+    }
+
+    public function due(DateTime $dateTime): TaskFactory
+    {
+        return $this->state(function () use ($dateTime) {
+            return [
+                'due' => $dateTime
+            ];
+        });
     }
 }

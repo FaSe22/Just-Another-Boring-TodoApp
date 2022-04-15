@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\NewTaskEvent;
 use App\Events\UpdateTaskEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +15,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property mixed $state
  * @property mixed $histories
  * @property mixed $id
+ * @property mixed $title
+ * @property mixed $due
+ * @property mixed $assignee
  */
 class Task extends Model
 {
@@ -23,7 +27,8 @@ class Task extends Model
     use HasFactory;
 
     protected $dispatchesEvents = [
-        'updating' => UpdateTaskEvent::class
+        'saved' => NewTaskEvent::class,
+        'updated' => UpdateTaskEvent::class,
     ];
 
     /**
