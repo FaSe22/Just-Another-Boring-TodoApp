@@ -145,5 +145,4 @@ class TaskTest extends TestCase
         $this->expectException(QueryException::class);
         $task->update(['state' => '__INVALID_STATE__']);
     }
-
 }
