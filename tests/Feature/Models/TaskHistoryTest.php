@@ -24,10 +24,10 @@ class TaskHistoryTest extends TestCase
         /** @var Task $task */
         $task = Task::factory()
             ->for(User::factory(), 'creator')
-            ->has(TaskHistory::factory()->status('DONE'), 'history')
+            ->has(TaskHistory::factory()->status('DONE'), 'histories')
             ->create();
 
-        $this->assertNotNull($task->history);
+        $this->assertNotNull($task->histories);
     }
 
     /**

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property mixed $creator
  * @property mixed $priority
  * @property mixed $state
- * @property mixed $history
+ * @property mixed $histories
  */
 class Task extends Model
 {
@@ -34,9 +34,14 @@ class Task extends Model
         return $this->belongsTo(User::class, 'assignee_id');
     }
 
-    public function history(): HasMany
+    public function histories(): HasMany
     {
         return $this->hasMany(TaskHistory::class);
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(TaskComment::class);
     }
 
 }
