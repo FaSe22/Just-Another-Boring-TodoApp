@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e93a07051165abe1d97a9a3b5060653e",
+    "content-hash": "7a209c6d7c9c1d37b80ec72b53372040",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -492,59 +492,6 @@
                 }
             ],
             "time": "2020-12-29T14:50:06+00:00"
-        },
-        {
-            "name": "facade/ignition-contracts",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/facade/ignition-contracts.git",
-                "reference": "3c921a1cdba35b68a7f0ccffc6dffc1995b18267"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
-                "reference": "3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.3|^8.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^v2.15.8",
-                "phpunit/phpunit": "^9.3.11",
-                "vimeo/psalm": "^3.17.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Facade\\IgnitionContracts\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://flareapp.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Solution contracts for Ignition",
-            "homepage": "https://github.com/facade/ignition-contracts",
-            "keywords": [
-                "contracts",
-                "flare",
-                "ignition"
-            ],
-            "support": {
-                "issues": "https://github.com/facade/ignition-contracts/issues",
-                "source": "https://github.com/facade/ignition-contracts/tree/1.0.2"
-            },
-            "time": "2020-10-16T08:27:54+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -1772,35 +1719,33 @@
         },
         {
             "name": "mateusjunges/laravel-acl",
-            "version": "v4.1.0",
+            "version": "3.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mateusjunges/laravel-acl.git",
-                "reference": "0b8385814ccfe9d9bbb13639957e510158e6ad06"
+                "reference": "55b524d113b3689af68e11139bc133ad7e734f2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mateusjunges/laravel-acl/zipball/0b8385814ccfe9d9bbb13639957e510158e6ad06",
-                "reference": "0b8385814ccfe9d9bbb13639957e510158e6ad06",
+                "url": "https://api.github.com/repos/mateusjunges/laravel-acl/zipball/55b524d113b3689af68e11139bc133ad7e734f2a",
+                "reference": "55b524d113b3689af68e11139bc133ad7e734f2a",
                 "shasum": ""
             },
             "require": {
-                "facade/ignition-contracts": "^1.0",
-                "illuminate/auth": "^8.0|^9.0",
-                "illuminate/container": "^8.0|^9.0",
-                "illuminate/database": "^8.0|^9.0",
-                "illuminate/support": "^8.0|^9.0",
+                "illuminate/auth": "^7.28|^8.0|^9.0",
+                "illuminate/database": "^7.28|^8.0|^9.0",
+                "illuminate/support": "^7.28|^8.0|^9.0",
                 "php": "^7.4|^8.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.4",
-                "orchestra/testbench": "^6.0|^7.0",
-                "phpunit/phpunit": "^9.4",
+                "orchestra/testbench": "^5.0|^6.0|^7.0",
+                "phpunit/phpunit": "^9.0",
                 "predis/predis": "^1.1"
             },
             "suggest": {
                 "facade/igntion": "Needed to be able to use the ignition solutions for laravel-acl"
             },
+            "default-branch": true,
             "type": "laravel-package",
             "extra": {
                 "laravel": {
@@ -1812,9 +1757,6 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
                 "psr-4": {
                     "Junges\\ACL\\": "src/"
                 }
@@ -1851,7 +1793,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-04-12T14:01:01+00:00"
+            "time": "2022-03-20T20:25:34+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5856,6 +5798,59 @@
                 "source": "https://github.com/facade/ignition"
             },
             "time": "2022-02-23T18:31:24+00:00"
+        },
+        {
+            "name": "facade/ignition-contracts",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facade/ignition-contracts.git",
+                "reference": "3c921a1cdba35b68a7f0ccffc6dffc1995b18267"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
+                "reference": "3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^v2.15.8",
+                "phpunit/phpunit": "^9.3.11",
+                "vimeo/psalm": "^3.17.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Facade\\IgnitionContracts\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://flareapp.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Solution contracts for Ignition",
+            "homepage": "https://github.com/facade/ignition-contracts",
+            "keywords": [
+                "contracts",
+                "flare",
+                "ignition"
+            ],
+            "support": {
+                "issues": "https://github.com/facade/ignition-contracts/issues",
+                "source": "https://github.com/facade/ignition-contracts/tree/1.0.2"
+            },
+            "time": "2020-10-16T08:27:54+00:00"
         },
         {
             "name": "fakerphp/faker",
