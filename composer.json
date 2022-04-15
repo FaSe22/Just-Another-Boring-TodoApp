@@ -12,6 +12,7 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "mateusjunges/laravel-acl": "^4.1",
         "squizlabs/php_codesniffer": "^3.6"
     },
     "require-dev": {
