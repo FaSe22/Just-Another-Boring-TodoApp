@@ -33,5 +33,3 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
-    - name: PHPStan (php-actions)
-      uses: php-actions/phpstan@v3.0.0
