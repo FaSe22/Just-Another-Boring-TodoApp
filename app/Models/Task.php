@@ -26,11 +26,6 @@ class Task extends Model
 
     use HasFactory;
 
-    protected $dispatchesEvents = [
-        'saved' => NewTaskEvent::class,
-        'updated' => UpdateTaskEvent::class,
-    ];
-
     /**
      * @return BelongsTo
      * @author Sebastian Faber <sebastian@startup-werk.de>

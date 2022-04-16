@@ -160,17 +160,5 @@ class TaskTest extends TestCase
         $this->assertDatabaseCount('task_histories', 1);
     }
 
-    /**
-     * @return void
-     * @test
-     * @author Sebastian Faber <sebastian@startup-werk.de>
-     */
-    public function ifATasksStateIsUpdatedUpdateTaskEventShouldBeDispatched()
-    {
-        $task = Task::factory()->for(User::factory(), 'creator')->create();
-        Event::fake();
-        $task->update(['state'=> 'ON_HOLD']);
-        Event::assertDispatched(UpdateTaskEvent::class);
-    }
 
 }

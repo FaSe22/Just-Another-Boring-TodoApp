@@ -6,6 +6,8 @@ use App\Events\NewTaskEvent;
 use App\Events\UpdateTaskEvent;
 use App\Listeners\NotifyAssignee;
 use App\Listeners\WriteTaskHistory;
+use App\Models\Task;
+use App\Observers\TaskObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Console\Events\ScheduledTaskFailed;
@@ -24,13 +26,6 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        NewTaskEvent::class => [
-            NotifyAssignee::class
-        ],
-        UpdateTaskEvent::class => [
-            WriteTaskHistory::class,
-            NotifyAssignee::class
-        ],
     ];
 
     /**
@@ -40,6 +35,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Task::observe(TaskObserver::class);
     }
 }
