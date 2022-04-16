@@ -16,7 +16,12 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function a_user_can_have_tasks()
+    /**
+     * @return void
+     * @test
+     * @author Sebastian Faber <sebastian@startup-werk.de>
+     */
+    public function aUserCanHaveTasks()
     {
         /** @var User $user */
         $user = User::factory()->has(Task::factory(3))->create();

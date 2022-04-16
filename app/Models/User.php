@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\HasNotificationSettings;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
 use Junges\ACL\Concerns\HasPermissions;
 use Junges\ACL\Concerns\UsersTrait;
 use Laravel\Sanctum\HasApiTokens;
@@ -16,7 +18,7 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, UsersTrait;
+    use HasApiTokens, HasFactory, Notifiable, UsersTrait, HasNotificationSettings;
 
     /**
      * The attributes that are mass assignable.
@@ -61,6 +63,11 @@ class User extends Authenticatable
     public function taskComments(): HasMany
     {
         return $this->hasMany(TaskComment::class, 'author_id');
+    }
+
+    public function notificationSettings()
+    {
+        return $this->belongsToMany(NotificationSetting::class);
     }
 
 }

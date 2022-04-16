@@ -7,7 +7,9 @@ use App\Events\UpdateTaskEvent;
 use App\Listeners\NotifyAssignee;
 use App\Listeners\WriteTaskHistory;
 use App\Models\Task;
+use App\Models\User;
 use App\Observers\TaskObserver;
+use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Console\Events\ScheduledTaskFailed;
@@ -36,5 +38,6 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Task::observe(TaskObserver::class);
+        User::observe(UserObserver::class);
     }
 }

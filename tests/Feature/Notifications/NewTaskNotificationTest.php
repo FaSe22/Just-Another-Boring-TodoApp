@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Notifications;
 
+use App\Models\NotificationSetting;
 use App\Models\Task;
 use App\Models\User;
 use App\Notifications\NewTaskNotification;
@@ -25,11 +26,11 @@ class NewTaskNotificationTest extends TestCase
         /** @var Task $task */
         $task = Task::factory()
             ->for(User::factory(), 'creator')
-            ->for(User::factory(), 'assignee')
+            ->for(User::factory()->has(NotificationSetting::factory()), 'assignee')
             ->create();
 
         Notification::assertSentTo($task->assignee, NewTaskNotification::class);
-   }
+    }
 
     /**
      * @return void
@@ -46,11 +47,41 @@ class NewTaskNotificationTest extends TestCase
             ->create();
 
         /** @var User $assignee */
-        $assignee = User::factory()->create();
+        $assignee = User::factory()
+            ->has(NotificationSetting::factory())
+            ->create();
+
         $task->update(['assignee_id' => $assignee->id]);
 
         $this->assertEquals($assignee->id, $task->refresh()->assignee->id);
         Notification::assertSentTo($task->assignee, NewTaskNotification::class);
     }
+
+    /**
+     * @return void
+     * @test
+     * @author Sebastian Faber <sebastian@startup-werk.de>
+     */
+    public function ifTheAssigneeOfATaskChangesTheNewAssigneeShouldNotBeNotifiedIfHeDisabledOnAssignmentNotifications()
+    {
+        Notification::fake();
+
+        /** @var Task $task */
+        $task = Task::factory()
+            ->for(User::factory(), 'creator')
+            ->create();
+
+        /** @var User $assignee */
+        $assignee = User::factory()
+            ->has(NotificationSetting::factory())
+            ->create();
+
+        $assignee->notificationSettings()->update(['on_assignment' => false]);
+        $task->update(['assignee_id' => $assignee->id]);
+
+        $this->assertEquals($assignee->id, $task->refresh()->assignee->id);
+        Notification::assertNotSentTo($task->assignee, NewTaskNotification::class);
+    }
+
 
 }

@@ -10,14 +10,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property mixed $creator
+ * @property User $creator
  * @property mixed $priority
  * @property mixed $state
  * @property mixed $histories
  * @property mixed $id
  * @property mixed $title
  * @property mixed $due
- * @property mixed $assignee
+ * @property User $assignee
  */
 class Task extends Model
 {
@@ -48,6 +48,11 @@ class Task extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(TaskComment::class);
+    }
+
+    public function notificationSettings(): HasMany
+    {
+        return $this->hasMany(NotificationSetting::class);
     }
 
 }
