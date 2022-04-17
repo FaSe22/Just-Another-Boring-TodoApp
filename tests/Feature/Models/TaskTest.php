@@ -7,12 +7,10 @@
 
 namespace Tests\Feature\Models;
 
-use App\Events\UpdateTaskEvent;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class TaskTest extends TestCase
@@ -89,7 +87,6 @@ class TaskTest extends TestCase
         $this->assertEquals('LOW', $task->refresh()->priority);
     }
 
-
     /**
      * @return void
      * @test
@@ -108,7 +105,7 @@ class TaskTest extends TestCase
      */
     public function updatingATaskWithInvalidPriorityValueShouldThrowAQueryException()
     {
-        $task =Task::factory()->for(User::factory(), 'creator')->create();
+        $task = Task::factory()->for(User::factory(), 'creator')->create();
         $this->expectException(QueryException::class);
         $task->update(['priority' => '__INVALID_PRIORITY__']);
     }
@@ -143,7 +140,7 @@ class TaskTest extends TestCase
      */
     public function updatingATaskWithInvalidStateValueShouldThrowAQueryException()
     {
-        $task =Task::factory()->for(User::factory(), 'creator')->create();
+        $task = Task::factory()->for(User::factory(), 'creator')->create();
         $this->expectException(QueryException::class);
         $task->update(['state' => '__INVALID_STATE__']);
     }
@@ -156,9 +153,7 @@ class TaskTest extends TestCase
     public function afterUpdatingATasksStateThereShouldBeAnEntryInTaskHistories()
     {
         $task = Task::factory()->for(User::factory(), 'creator')->create();
-        $task->update(['state'=> 'ON_HOLD']);
+        $task->update(['state' => 'ON_HOLD']);
         $this->assertDatabaseCount('task_histories', 1);
     }
-
-
 }

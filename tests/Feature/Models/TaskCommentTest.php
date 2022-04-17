@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class TaskCommentTest extends TestCase
 {
-
     use RefreshDatabase;
 
     /**

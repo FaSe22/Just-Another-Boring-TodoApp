@@ -83,7 +83,6 @@ class NewTaskNotificationTest extends TestCase
         Notification::assertNotSentTo($task->assignee, NewTaskNotification::class);
     }
 
-
     /**
      * @return void
      * @test
@@ -103,11 +102,10 @@ class NewTaskNotificationTest extends TestCase
             ->has(NotificationSetting::factory())
             ->create();
 
-        $assignee->notificationSettings()->create(['on_assignment' => false, 'task_id'=> $task->id]);
+        $assignee->notificationSettings()->create(['on_assignment' => false, 'task_id' => $task->id]);
         $task->update(['assignee_id' => $assignee->id]);
 
         $this->assertEquals($assignee->id, $task->refresh()->assignee->id);
         Notification::assertNotSentTo($task->assignee, NewTaskNotification::class);
     }
-
 }

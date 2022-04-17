@@ -11,7 +11,6 @@ use Tests\TestCase;
 
 class CheckTaskDueDateCommandTest extends TestCase
 {
-
     use RefreshDatabase;
 
     protected Task $task;
@@ -23,7 +22,6 @@ class CheckTaskDueDateCommandTest extends TestCase
      */
     public function ifATasksDueDateIsApproachingAnEmailNotificationShouldBeSentToAssignee()
     {
-
         Notification::fake();
         $this->artisan('duedate:check');
         Notification::assertSentTo($this->task->assignee, OneDayBeforeDeadlineNotification::class);
@@ -36,7 +34,6 @@ class CheckTaskDueDateCommandTest extends TestCase
      */
     public function ifATasksDueDateIsApproachingAnEmailNotificationShouldBeSentToCreator()
     {
-
         Notification::fake();
         $this->artisan('duedate:check');
         Notification::assertSentTo($this->task->creator, OneDayBeforeDeadlineNotification::class);
@@ -49,7 +46,6 @@ class CheckTaskDueDateCommandTest extends TestCase
      */
     public function ifATasksDueDateIsApproachingItsPriorityShouldBeSetToHigh()
     {
-
         Notification::fake();
         $this->artisan('duedate:check');
 

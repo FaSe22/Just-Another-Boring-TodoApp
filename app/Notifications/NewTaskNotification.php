@@ -4,7 +4,6 @@ namespace App\Notifications;
 
 use App\Models\Task;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -44,7 +43,7 @@ class NewTaskNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
                     ->line('A new Task was assigned to you.')
                     ->action('See Task at ', url('/tasks/' . $this->task->id))
                     ->line('Thank you for using our application!');

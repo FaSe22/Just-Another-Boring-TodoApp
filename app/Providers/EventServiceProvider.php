@@ -2,18 +2,12 @@
 
 namespace App\Providers;
 
-use App\Events\NewTaskEvent;
-use App\Events\UpdateTaskEvent;
-use App\Listeners\NotifyAssignee;
-use App\Listeners\WriteTaskHistory;
 use App\Models\Task;
 use App\Models\User;
 use App\Observers\TaskObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
-use Illuminate\Console\Events\ScheduledTaskFailed;
-use Illuminate\Console\Events\ScheduledTaskStarting;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 

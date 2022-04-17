@@ -26,7 +26,5 @@ class UserTest extends TestCase
         /** @var User $user */
         $user = User::factory()->has(Task::factory(3))->create();
         $this->assertCount(3, $user->tasks);
-
     }
-
 }

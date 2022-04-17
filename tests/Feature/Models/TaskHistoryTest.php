@@ -11,7 +11,6 @@ use Tests\TestCase;
 
 class TaskHistoryTest extends TestCase
 {
-
     use RefreshDatabase;
 
     /**

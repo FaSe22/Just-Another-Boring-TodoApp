@@ -4,7 +4,6 @@ namespace App\Notifications;
 
 use App\Models\Task;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -44,7 +43,7 @@ class OneDayBeforeDeadlineNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
                     ->line('Your task ' . $this->task->title . ' is due on ' . $this->task->due)
                     ->action('You can find your task here', url('/tasks/'. $this->task->id))
                     ->line('Thank you for using our application!');

@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class NotificationSettingTest extends TestCase
 {
-
     use RefreshDatabase;
 
     /**
@@ -26,11 +25,10 @@ class NotificationSettingTest extends TestCase
             'on_assignment' => true,
             'one_day_before_deadline' => true,
             'comment_on_your_task' => true,
-            'on_state_change' => false
+            'on_state_change' => false,
         ]);
         $this->assertNotEmpty($user->notificationSettings()->get());
     }
-
 
     /**
      * @return void
@@ -50,5 +48,4 @@ class NotificationSettingTest extends TestCase
         $this->assertDatabaseCount('notification_settings', 0);
         $this->assertDatabaseCount('notification_setting_user', 0);
     }
-
 }
