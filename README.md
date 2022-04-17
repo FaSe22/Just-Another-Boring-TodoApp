@@ -2,8 +2,9 @@
 <img src="public/Logo.png">
 </p>
 
-[![Check & fix styling](https://github.com/FaSe22/Just-Another-Boring-TodoApp/actions/workflows/phpcsfixer.yml/badge.svg)](https://github.com/FaSe22/Just-Another-Boring-TodoApp/actions/workflows/phpcsfixer.yml)
-![Continuous Integration](https://github.com/FaSe22/Just-Another-Boring-TodoApp/actions/workflows/laravel.yml/badge.svg)
+![](https://github.com/FaSe22/Just-Another-Boring-TodoApp/workflows/Check%20&%20fix%20styling/badge.svg)
+![](https://github.com/FaSe22/Just-Another-Boring-TodoApp/workflows/Continuous%20Integration/badge.svg)
+
 
 ## About this App
 
