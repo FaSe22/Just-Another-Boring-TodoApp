@@ -16,7 +16,7 @@ class TaskObserver
      */
     public function created(Task $task)
     {
-        if ($task->assignee && $task->assignee->shouldBeNotifiedOnAssignment()) {
+        if ($task->assignee && $task->assignee->shouldBeNotifiedOnAssignment($task)) {
             $task->assignee->notify(new NewTaskNotification($task));
         }
     }
@@ -29,7 +29,7 @@ class TaskObserver
      */
     public function updated(Task $task)
     {
-        if ($task->wasChanged('assignee_id') && $task->refresh()->assignee && $task->assignee->shouldBeNotifiedOnAssignment()) {
+        if ($task->wasChanged('assignee_id') && $task->refresh()->assignee && $task->assignee->shouldBeNotifiedOnAssignment($task)) {
             $task->assignee->notify(new NewTaskNotification($task));
         }
 

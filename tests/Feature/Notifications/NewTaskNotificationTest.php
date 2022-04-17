@@ -84,4 +84,30 @@ class NewTaskNotificationTest extends TestCase
     }
 
 
+    /**
+     * @return void
+     * @test
+     * @author Sebastian Faber <sebastian@startup-werk.de>
+     */
+    public function ifTheAssigneeOfATaskChangesTheNewAssigneeShouldNotBeNotifiedIfHeDisabledOnAssignmentNotificationsForThisTask()
+    {
+        Notification::fake();
+
+        /** @var Task $task */
+        $task = Task::factory()
+            ->for(User::factory(), 'creator')
+            ->create();
+
+        /** @var User $assignee */
+        $assignee = User::factory()
+            ->has(NotificationSetting::factory())
+            ->create();
+
+        $assignee->notificationSettings()->create(['on_assignment' => false, 'task_id'=> $task->id]);
+        $task->update(['assignee_id' => $assignee->id]);
+
+        $this->assertEquals($assignee->id, $task->refresh()->assignee->id);
+        Notification::assertNotSentTo($task->assignee, NewTaskNotification::class);
+    }
+
 }
