@@ -35,9 +35,9 @@ class CheckTaskDueDate extends Command
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         Task::where('due', ">=", today()->subDay())->chunk(100, function ($tasks) {
             $tasks->map(function ($task) {
