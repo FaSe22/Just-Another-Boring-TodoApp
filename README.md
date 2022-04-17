@@ -3,7 +3,7 @@
 </p>
 
 [![Check & fix styling](https://github.com/FaSe22/Just-Another-Boring-TodoApp/actions/workflows/phpcsfixer.yml/badge.svg)](https://github.com/FaSe22/Just-Another-Boring-TodoApp/actions/workflows/phpcsfixer.yml)
-![](https://github.com/FaSe22/Just-Another-Boring-TodoApp/actions/workflows/Continuous%20Integration/badge.svg)
+![](https://github.com/FaSe22/Just-Another-Boring-TodoApp/workflows/Continuous%20Integration/badge.svg)
 ## About this App
 
 This is just another Todo App. 
