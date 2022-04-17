@@ -9,13 +9,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
-/**
- * @property $task
- */
 class CheckTaskDueDateCommandTest extends TestCase
 {
 
     use RefreshDatabase;
+
+    protected Task $task;
 
     /**
      * @return void
@@ -67,5 +66,4 @@ class CheckTaskDueDateCommandTest extends TestCase
             ->due(today())
             ->create();
     }
-
 }
