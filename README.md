@@ -3,7 +3,7 @@
 </p>
 
 [![Check & fix styling](https://github.com/FaSe22/Just-Another-Boring-TodoApp/actions/workflows/phpcsfixer.yml/badge.svg)](https://github.com/FaSe22/Just-Another-Boring-TodoApp/actions/workflows/phpcsfixer.yml)
-[![Continous Integration](https://github.com/FaSe22/Just-Another-Boring-TodoApp/actions/workflows/laravel.yml/badge.svg)
+![Continuous Integration](https://github.com/FaSe22/Just-Another-Boring-TodoApp/actions/workflows/laravel.yml/badge.svg)
 
 ## About this App
 
