@@ -9,6 +9,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
+/**
+ * @property $task
+ */
 class CheckTaskDueDateCommandTest extends TestCase
 {
 
@@ -21,16 +24,10 @@ class CheckTaskDueDateCommandTest extends TestCase
      */
     public function ifATasksDueDateIsApproachingAnEmailNotificationShouldBeSentToAssignee()
     {
-        /** @var Task $task */
-        $task = Task::factory()
-            ->for(User::factory(), 'creator')
-            ->for(User::factory(), 'assignee')
-            ->due(today())
-            ->create();
 
         Notification::fake();
         $this->artisan('duedate:check');
-        Notification::assertSentTo($task->assignee, OneDayBeforeDeadlineNotification::class);
+        Notification::assertSentTo($this->task->assignee, OneDayBeforeDeadlineNotification::class);
     }
 
     /**
@@ -40,16 +37,10 @@ class CheckTaskDueDateCommandTest extends TestCase
      */
     public function ifATasksDueDateIsApproachingAnEmailNotificationShouldBeSentToCreator()
     {
-        /** @var Task $task */
-        $task = Task::factory()
-            ->for(User::factory(), 'creator')
-            ->for(User::factory(), 'assignee')
-            ->due(today())
-            ->create();
 
         Notification::fake();
         $this->artisan('duedate:check');
-        Notification::assertSentTo($task->creator, OneDayBeforeDeadlineNotification::class);
+        Notification::assertSentTo($this->task->creator, OneDayBeforeDeadlineNotification::class);
     }
 
     /**
@@ -59,16 +50,22 @@ class CheckTaskDueDateCommandTest extends TestCase
      */
     public function ifATasksDueDateIsApproachingItsPriorityShouldBeSetToHigh()
     {
-        /** @var Task $task */
-        $task = Task::factory()
-            ->for(User::factory(), 'creator')
-            ->for(User::factory(), 'assignee')
-            ->due(today())
-            ->create();
 
         Notification::fake();
         $this->artisan('duedate:check');
 
-        $this->assertEquals('HIGH', $task->refresh()->priority);
+        $this->assertEquals('HIGH', $this->task->refresh()->priority);
     }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        /** @var Task $task */
+        $this->task = Task::factory()
+            ->for(User::factory(), 'creator')
+            ->for(User::factory(), 'assignee')
+            ->due(today())
+            ->create();
+    }
+
 }
