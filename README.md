@@ -9,9 +9,6 @@
 This is just another Todo App. 
 Im practising Laravel and TDD with it. 
 
-As a user you can write, edit and delete your own Tasks.
-Tasks can be assigned to other users in your team.
-You can display some statistics. 
 
 ## Installation
 
@@ -42,3 +39,18 @@ sail artisan serve
 `````bash
 sail artisan test
 `````
+
+## Functionality
+
+The app works for individual users and for teams.
+
+Users can view their own statistics and have full permissions in their own space.
+As a user you can write, edit and delete your own Tasks.
+
+If you are the administrator of a team you can assign permissions to team member.
+Tasks can be assigned to other users in your team.
+
+
+## Technical Details
+
+The permission system I use is [ACL](https://mateusjunges.github.io/laravel-acl)
