@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class TaskControllerTest extends TestCase
 {
-
     use RefreshDatabase;
 
     /**
@@ -24,7 +23,7 @@ class TaskControllerTest extends TestCase
         $this->actingAs($user)->post('tasks', [
             'title' => 'title',
             'priority' => 'LOW',
-            'state' => 'TODO'
+            'state' => 'TODO',
         ])->assertSuccessful();
 
         $this->assertDatabaseCount('tasks', 1);
@@ -40,8 +39,7 @@ class TaskControllerTest extends TestCase
         $this->post('tasks', [
             'title' => 'title',
             'priority' => 'LOW',
-            'state' => 'TODO'
+            'state' => 'TODO',
         ])->assertForbidden();
     }
-
 }
