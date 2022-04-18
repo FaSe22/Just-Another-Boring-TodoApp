@@ -67,7 +67,7 @@ class User extends Authenticatable
         return $this->hasMany(TaskComment::class, 'author_id');
     }
 
-    public function notificationSettings()
+    public function notificationSettings(): BelongsToMany
     {
         return $this->belongsToMany(NotificationSetting::class);
     }
