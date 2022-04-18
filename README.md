@@ -4,8 +4,7 @@
 
 ![](https://github.com/FaSe22/Just-Another-Boring-TodoApp/workflows/Check%20&%20fix%20styling/badge.svg)
 ![](https://github.com/FaSe22/Just-Another-Boring-TodoApp/workflows/Continuous%20Integration/badge.svg)
-
-
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
 ## About this App
 
 This is just another Todo App. 
