@@ -5,12 +5,10 @@ namespace Tests\Feature\Models;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TeamTest extends TestCase
 {
-
     use RefreshDatabase;
 
     /**
@@ -49,7 +47,5 @@ class TeamTest extends TestCase
         $this->assertDatabaseCount('team_user', 1);
         $team->delete();
         $this->assertDatabaseCount('team_user', 0);
-
     }
-
 }
