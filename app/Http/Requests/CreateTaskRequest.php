@@ -30,7 +30,7 @@ class CreateTaskRequest extends FormRequest
             'assignee_id' => 'nullable|numeric',
             'priority' => 'in:LOW,MEDIUM,HIGH',
             'due' => 'nullable|date',
-            'state'=> 'in:TODO,IN_PROGRESS,ON_HOLD,DONE'
+            'state' => 'in:TODO,IN_PROGRESS,ON_HOLD,DONE',
         ];
     }
 }
