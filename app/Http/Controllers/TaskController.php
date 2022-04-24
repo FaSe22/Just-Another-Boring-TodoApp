@@ -14,7 +14,7 @@ class TaskController extends Controller
 
     public function index()
     {
-        return TaskResource::collection(Task::with('comments')->paginate(5));
+        return TaskResource::collection(Task::with(['comments', 'histories'])->paginate(5));
     }
 
     /**
