@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-
     public function index()
     {
         return TaskResource::collection(Task::with(['comments', 'histories'])->paginate(5));

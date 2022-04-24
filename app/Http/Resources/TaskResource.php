@@ -18,8 +18,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class TaskResource extends JsonResource
 {
-    public static $wrap = 'tasks';
-
     /**
      * Transform the resource into an array.
      *
@@ -37,8 +35,8 @@ class TaskResource extends JsonResource
             'priority' => $this->priority,
             'state' => $this->state,
             'due_date' => $this->due,
-            'history' => TaskHistoryResource::collection($this->whenLoaded('histories')),
-            'comments' => CommentResource::collection($this->whenLoaded('comments'))
+            'history' => $this->histories,
+            'comments' => CommentResource::collection($this->whenLoaded('comments')),
         ];
     }
 }
