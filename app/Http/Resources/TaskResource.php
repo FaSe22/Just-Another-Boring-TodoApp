@@ -36,7 +36,7 @@ class TaskResource extends JsonResource
             'state' => $this->state,
             'due_date' => $this->due,
             'history' => $this->histories,
-            'comments' => CommentResource::collection($this->whenLoaded('comments'))
+            'comments' => CommentResource::collection($this->whenLoaded('comments')),
         ];
     }
 }
