@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTaskRequest;
+use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -10,14 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index(): Response
+
+    public function index()
     {
-        return response(Task::all(), 200);
+        return TaskResource::collection(Task::with('comments')->paginate(5));
     }
 
     /**
@@ -48,7 +45,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        return \response(new TaskResource(Task::findOrFail($id)), 200);
     }
 
     /**
