@@ -17,7 +17,7 @@ class TaskHistoryResource extends JsonResource
         return [
             'id' => $this->id,
             'task' => new TaskResource($this->whenLoaded('task')),
-            'state' => $this->state
+            'state' => $this->state,
         ];
     }
 }
